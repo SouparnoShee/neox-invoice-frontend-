@@ -41,7 +41,7 @@ const InvoiceOutput = ({ clientname }) => {
                     <img src={neoxlogo} alt="" />
                     <div className="neox-heading">
                         <h1>NEOX INOTECH</h1>
-                        <h4>GET YOUR FUTURE TECH SOLUTIOnS WITH US </h4>
+                        <h4>GET YOUR FUTURE TECH SOLUTIONS WITH US </h4>
                     </div>
 
                 </div>

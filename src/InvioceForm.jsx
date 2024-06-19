@@ -16,7 +16,7 @@ const InvioceForm = () => {
     const handleClient = async (e) => {
         e.preventDefault()
         try {
-            const res = await axios.post("http://localhost:5000/api/v1/clientdetails", { clientname, clientadrs1, clientadrs2, clientphone }, { withCredentials: true })
+            const res = await axios.post("https://neox-infotech-backend.onrender.com/api/v1/clientdetails", { clientname, clientadrs1, clientadrs2, clientphone }, { withCredentials: true })
             toast.success(res.data.message)
             setOpenNextForm(true)
         } catch (error) {
@@ -24,20 +24,20 @@ const InvioceForm = () => {
         }
 
     }
-    const AddMoreProjects = async () => {
-        try {
-            const res = await axios.post(`http://localhost:5000/api/v1/clientproject/${clientname}`, { project, qty, price }, { withCredentials: true })
-            toast.success(res.data.message)
-            setProject('')
-            setQty('')
-            setPrice('')
-        } catch (error) {
-            console.log(error)
-        }
-    }
+    // const AddMoreProjects = async () => {
+    //     try {
+    //         const res = await axios.post(`https://neox-infotech-backend.onrender.com/api/v1/clientproject/${clientname}`, { project, qty, price }, { withCredentials: true })
+    //         toast.success(res.data.message)
+    //         setProject('')
+    //         setQty('')
+    //         setPrice('')
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
     const projectSubmit = async () => {
         try {
-            const res = await axios.post(`http://localhost:5000/api/v1/clientproject/${clientname}`, { project, qty, price }, { withCredentials: true })
+            const res = await axios.post(`https://neox-infotech-backend.onrender.com/api/v1/clientproject/${clientname}`, { project, qty, price }, { withCredentials: true })
             toast.success(res.data.message)
             setInvoiceSubmit(true)
         } catch (error) {
@@ -63,14 +63,12 @@ const InvioceForm = () => {
                         </form>
                         {
                             openNextForm ? <div className="next-form">
-                                <h4>Invoice Number - 682368628</h4>
-                                <h4>Date - {`${new Date().getDay()}/${new Date().getMonth()}/${new Date().getFullYear()}`}</h4>
                                 <div className="project-input">
                                     <input type="text" placeholder='Project Details' onChange={(e) => setProject(e.target.value)} />
                                     <input type="text" placeholder='Project Qty' onChange={(e) => setQty(e.target.value)} />
                                     <input type="text" placeholder='Project Price' onChange={(e) => setPrice(e.target.value)} />
                                     <div className="buttons">
-                                        <button onClick={AddMoreProjects}>Add More</button>
+                                        {/* <button onClick={AddMoreProjects}>Add More</button> */}
                                         <button onClick={projectSubmit}>Submit</button>
                                     </div>
                                 </div>

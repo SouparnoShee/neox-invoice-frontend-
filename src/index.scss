@@ -74,22 +74,35 @@
 .invoice-output {
   width: 85%;
   padding: 30px;
-  border: 1px solid black;
   margin: auto;
   .head {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 30px;
+    @media (max-width: 600px) {
+      gap: 10px;
+    }
     margin-bottom: 60px;
     .neox-heading {
       h1 {
         font-size: 50px;
         font-weight: 900;
+        @media (max-width: 600px) {
+          font-size: 30px;
+        }
+      }
+      h4 {
+        @media (max-width: 600px) {
+          font-size: 14px;
+        }
       }
     }
     img {
       height: 120px;
+      @media (max-width: 600px) {
+        height: 80px;
+      }
     }
   }
   .details {
@@ -103,16 +116,25 @@
       font-size: 18px;
       font-weight: 600;
       gap: 12px;
+      @media (max-width: 600px) {
+        font-size: 12px;
+      }
     }
   }
   .invoice {
     margin-bottom: 60px;
+    @media (max-width: 600px) {
+      font-size: 10px;
+    }
   }
   .shaded-table {
     width: 100%;
     margin-bottom: 20px;
     th {
       font-size: 20px;
+      @media (max-width: 600px) {
+        font-size: 12px;
+      }
     }
     th,
     td {
@@ -122,6 +144,9 @@
     }
     td {
       border-right: 1px solid #ddd;
+      @media (max-width: 600px) {
+        font-size: 12px;
+      }
     }
     tr:nth-child(even) {
       background-color: #f2f2f2;

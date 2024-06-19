@@ -13,9 +13,24 @@ const InvoiceOutput = ({ clientname }) => {
         documentTitle: "Client-Data",
         onAfterPrint: () => alert("Print Success")
     })
+    const dateObj = new Date();
+    const month = dateObj.getMonth() + 1; // months from 1-12
+    const day = dateObj.getDate();
+    const year = dateObj.getFullYear();
+
+
+
+
+
+    // Using padded values, so that 2023/1/7 becomes 2023/01/07
+    const pMonth = month.toString().padStart(2, "0");
+    const pDay = day.toString().padStart(2, "0");
+    const newPaddedDate = `${year}/${pMonth}/${pDay}`;
+
+    console.log(newPaddedDate)
     const getClient = async () => {
         try {
-            const res = await axios.get(`http://localhost:5000/api/v1/getclient/${clientname}`, { withCredentials: true })
+            const res = await axios.get(`https://neox-infotech-backend.onrender.com/api/v1/getclient/${clientname}`, { withCredentials: true })
             setClients(res.data.message)
         } catch (error) {
             console.log(error)
@@ -23,7 +38,7 @@ const InvoiceOutput = ({ clientname }) => {
     }
     const getProject = async () => {
         try {
-            const res = await axios.get(`http://localhost:5000/api/v1/getproject/${clientname}`, { withCredentials: true })
+            const res = await axios.get(`https://neox-infotech-backend.onrender.com/api/v1/getproject/${clientname}`, { withCredentials: true })
             setProjects(res.data.message)
         } catch (error) {
             console.log(error)
@@ -62,7 +77,7 @@ const InvoiceOutput = ({ clientname }) => {
                 </div>
                 <div className="invoice">
                     <h2>Invoice No. - {inv_no}</h2>
-                    <h2>Date - {clients?.createdAt.slice(0, 10)}</h2>
+                    <h2>Date - {newPaddedDate}</h2>
                 </div>
                 <table className='shaded-table'>
                     <tr>
